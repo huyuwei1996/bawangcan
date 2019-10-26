@@ -2,7 +2,7 @@
 
 #更新 by Master_13
 #@20180115
-
+import os
 import sys
 import time
 from selenium import webdriver
@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import Select
 
 def process_category(all_event_url,driver):
     total=len(all_event_url)
-    print "开始报名"+str(total)+"个活动..."
+    print("开始报名"+str(total)+"个活动...")
     cnt=0
     no=0
     for url in all_event_url:
@@ -34,31 +34,33 @@ def process_category(all_event_url,driver):
             ok=driver.find_element_by_id("J_pop_ok")
             ok.click()
             cnt+=1
-            print str(cnt)+" success:"+url[1].encode('gbk','ignore')
-        except Exception, e:
-            print str(no)+' failed:'+url[1].encode('gbk','ignore')
-            print format(e)
+            # print(str(cnt)+" success:"+str(url[1].encode('gbk','ignore')))
+            print(str(cnt)+" success:"+url[1])
+        except Exception as e:
+            # print(str(no)+' failed:'+str(url[1].encode('gbk','ignore')))
+            print(str(no)+' failed:'+url[1])
+            print(format(e))
         time.sleep(1)
     return
 
 def main():
-    print '正在执行……'
+    print('正在执行……')
     skiptext=[u"牙",u"齿",u"搬家",u"口腔"]
 
-    print sys.argv
-    print len(sys.argv)
+    print(sys.argv)
+    print(len(sys.argv))
     dper= sys.argv[1]
-    print "your dper is:"+dper
+    print("your dper is:"+dper)
     
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
     driver = webdriver.Chrome(chrome_options=opts)
     time.sleep(1)
-    driver.maximize_window()
+    # driver.maximize_window()
 
-    driver.get("http://s.dianping.com/event/shanghai")
+    driver.get("http://s.dianping.com/event/shenzhen")
     driver.add_cookie({'name':'dper', 'value':dper,'path':'/'})
-    driver.get("http://s.dianping.com/event/shanghai")   
+    driver.get("http://s.dianping.com/event/shenzhen")
     
     tabs=driver.find_element_by_class_name('s-fix-wrap').find_elements_by_tag_name('div')
     
