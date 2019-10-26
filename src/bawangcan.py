@@ -71,7 +71,7 @@ def main():
         if tab.text.find(u'全部')!=-1:
             continue
         if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
-        # if tab.text.find(u'丽人')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
+        # if tab.text.find(u'玩乐')!=-1:
             tab.click()
             try:
                 while(1): #点击查看更多
