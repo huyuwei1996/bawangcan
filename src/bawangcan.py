@@ -45,7 +45,8 @@ def process_category(all_event_url,driver):
 
 def main():
     print('正在执行……')
-    skiptext=[u"牙",u"齿",u"搬家",u"口腔"]
+    # skiptext=[u"牙",u"齿",u"搬家",u"口腔"]
+    skiptext=[u""]
 
     print(sys.argv)
     print(len(sys.argv))
@@ -54,7 +55,8 @@ def main():
     
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
-    driver = webdriver.Chrome(chrome_options=opts)
+    opts.add_argument('--headless')
+    driver = webdriver.Chrome(options = opts)
     time.sleep(1)
     # driver.maximize_window()
 
@@ -68,7 +70,8 @@ def main():
     for tab in tabs:
         if tab.text.find(u'全部')!=-1:
             continue
-        if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'酒旅')!=-1 or tab.text.find(u'生活服务')!=-1:
+        # if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
+        if tab.text.find(u'丽人')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
             tab.click()
             try:
                 while(1): #点击查看更多
