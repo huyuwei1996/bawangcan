@@ -26,11 +26,11 @@ def process_category(all_event_url,driver):
             try:    #同意黄金替补
                 time.sleep(1)
                 sel=Select(driver.find_element_by_class_name("J_applyExtendInfo"))
-                sel.select_by_index(1)                
+                sel.select_by_index(1)
             except:
                 pass
 
-            time.sleep(2)            
+            time.sleep(2)
             ok=driver.find_element_by_id("J_pop_ok")
             ok.click()
             cnt+=1
@@ -52,7 +52,7 @@ def main():
     print(len(sys.argv))
     dper= sys.argv[1]
     print("your dper is:"+dper)
-    
+
     opts = Options()
     opts.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
     opts.add_argument('--headless')
@@ -63,15 +63,15 @@ def main():
     driver.get("http://s.dianping.com/event/shenzhen")
     driver.add_cookie({'name':'dper', 'value':dper,'path':'/'})
     driver.get("http://s.dianping.com/event/shenzhen")
-    
+
     tabs=driver.find_element_by_class_name('s-fix-wrap').find_elements_by_tag_name('div')
-    
+
     all_event_url=[]
     for tab in tabs:
         if tab.text.find(u'全部')!=-1:
             continue
-        if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
-        #if tab.text.find(u'玩乐')!=-1:
+        # if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
+        if tab.text.find(u'美食')!=-1 or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
             tab.click()
             try:
                 while(1): #点击查看更多
@@ -89,10 +89,10 @@ def main():
                 for s in skiptext:
                     if s in title.text:
                         continue
-                all_event_url.append((str(event_url),title.text))                    
-    
+                all_event_url.append((str(event_url),title.text))
+
     process_category(all_event_url, driver)
-              
+
     driver.quit()
 
 if __name__ == '__main__':
