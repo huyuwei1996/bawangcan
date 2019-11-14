@@ -22,7 +22,7 @@ def process_category(all_event_url, driver):
         try:
             big_btn = driver.find_element_by_class_name("big-btn")
             if big_btn.text.find(u'取消报名') != -1 or big_btn.text.find(u'已报名') != -1:
-                print('\033[4;32;40m' + str(no), url[1], '已报名' + '\033[0m')
+                print(str(no), url[1], '已报名')
                 continue
             big_btn.click()
 
@@ -38,10 +38,10 @@ def process_category(all_event_url, driver):
             ok.click()
             cnt += 1
             # print(str(cnt) + " success:" + str(url[1].encode('gbk', 'ignore')))
-            print('\033[1;43;40m' + str(no), url[1], '报名成功 !!!!!!' + '\033[0m')
+            print(str(no), url[1], '报名成功 !!!!!!')
         except NoSuchElementException as e:
             # print(str(no) + ' failed:' + str(url[1].encode('gbk', 'ignore')))
-            print('\033[1;31;40m' + str(no), url[1], '报名失败(可能不满足条件) ······' + '\033[0m')
+            print(str(no), url[1], '报名失败(可能不满足条件) ······')
         time.sleep(1)
     return
 
