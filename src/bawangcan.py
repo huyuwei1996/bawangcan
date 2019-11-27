@@ -76,7 +76,7 @@ def main():
             continue
         # if tab.text.find(u'美食')!=-1: # or tab.text.find(u'玩乐')!=-1 or tab.text.find(u'丽人')!=-1 or tab.text.find(u'生活')!=-1:
         if tab.text.find(u'美食') != -1 or tab.text.find(u'玩乐') != -1 or tab.text.find(u'生活') != -1 or tab.text.find(
-                u'培训') != -1:
+                u'其他') != -1:
             print('加载需要报名的url中...')
             tab.click()
             try:
