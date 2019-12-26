@@ -60,6 +60,7 @@ def main():
     opts.add_argument(
         "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
     opts.add_argument('--headless')  # 无头模式
+    opts.add_argument('--no-sandbox')
     driver = webdriver.Chrome(options=opts)
     time.sleep(1)
     # driver.maximize_window()
