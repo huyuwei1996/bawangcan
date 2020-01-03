@@ -12,7 +12,7 @@ pipeline {
                 message: "项目-霸王餐开始构建",
                 notifyPeople: ""
                 
-                git credentialsId: "jenkins", url: "git@github.com:huyuwei1996/bawangcan.git"
+//                 git credentialsId: "jenkins", url: "git@github.com:huyuwei1996/bawangcan.git"
             }
         }
         stage("使用环境变量") {
