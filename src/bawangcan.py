@@ -45,7 +45,7 @@ def process_category(all_event_url, driver):
             print(str(no), url[1], '报名失败(可能不满足条件) ······')
             fail += 1
             if fail >= 10:
-                print('*' * 10, 'Dper已过期', '*' * 10)
+                print('*' * 10, 'dper已过期，请更新dper', '*' * 10)
         time.sleep(1)
     return
 
