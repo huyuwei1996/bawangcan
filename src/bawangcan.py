@@ -65,9 +65,9 @@ def main():
         "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
     opts.add_argument('--headless')  # 无头模式
 
-
     driver = webdriver.Chrome(chrome_options=opts)
     time.sleep(1)
+
     # driver.maximize_window()
 
     driver.get("http://s.dianping.com/event/shenzhen")

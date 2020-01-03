@@ -24,7 +24,7 @@ def Login():
         with open("dper.txt", "r+") as f:
             f.seek(0)
             f.write(dp['value'])
-            # f.write('\r\n')
+            f.write('\n')
             print('登录成功，dper存入成功')
     else:
         print('未登录成功，dper存取失败')
@@ -45,5 +45,5 @@ if __name__ == '__main__':
         Login()
     except Exception as e:
         print(e)
-    driver.quit()
+    # driver.quit()
     print('退出浏览器了')
