@@ -16,6 +16,7 @@ def process_category(all_event_url, driver):
     print("开始报名" + str(total) + "个活动...")
     cnt = 0
     no = 0
+    fail = 0
     for url in all_event_url:
         driver.get(url[0])
         no += 1
@@ -42,6 +43,9 @@ def process_category(all_event_url, driver):
         except NoSuchElementException as e:
             # print(str(no) + ' failed:' + str(url[1].encode('gbk', 'ignore')))
             print(str(no), url[1], '报名失败(可能不满足条件) ······')
+            fail += 1
+            if fail >= 10:
+                print('*' * 10, 'Dper已过期', '*' * 10)
         time.sleep(1)
     return
 
@@ -61,10 +65,8 @@ def main():
         "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.86 Safari/537.36")
     opts.add_argument('--headless')  # 无头模式
 
-    # opts.add_argument('--no-sandbox')
-    # opts.add_argument("service_args = ['–ignore - ssl - errors = true', '–ssl - protocol = TLSv1']")
 
-    driver = webdriver.Chrome(options=opts)
+    driver = webdriver.Chrome(chrome_options=opts)
     time.sleep(1)
     # driver.maximize_window()
 
