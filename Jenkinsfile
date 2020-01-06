@@ -25,7 +25,7 @@ pipeline {
                 sh label: "", script: "./run.sh"
             }
         }
-         stage("清理工作空间"){
+        stage("清理工作空间"){
             steps{
             cleanWs()
             }
